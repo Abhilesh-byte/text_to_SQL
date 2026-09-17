@@ -2,6 +2,13 @@ from dotenv import load_dotenv
 load_dotenv()  # load all the environment variables
 
 import os
+import subprocess
+
+# --- Add this block right after your imports ---
+if not os.path.exists("student.db"):
+    print("Database not found. Running sql.py to generate it...")
+    subprocess.run(["python", "sql.py"])
+# -----------------------------------------------
 import sqlite3
 import google.generativeai as genai
 
